@@ -8,7 +8,7 @@ Output: 7 -> 0 -> 8
 #可以看做是两个数相加，需要考虑等长、不等长、进位等情况。
 """
 
-#first commit
+#first commit; cost time:119ms
 # Definition for singly-linked list.
 # class ListNode(object):
 #     def __init__(self, x):
@@ -55,7 +55,7 @@ class Solution(object):
             else:
                 return result.next
 
-#second commit
+#second commit; cost time:132ms
 # Definition for singly-linked list.
 # class ListNode(object):
 #     def __init__(self, x):
