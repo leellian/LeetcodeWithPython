@@ -1,4 +1,4 @@
-'''python
+```python
 """
 Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 
@@ -45,4 +45,4 @@ class Solution(object):
             else:
                 tmp_dict[target-value] = idx
         return False
-'''
+```
