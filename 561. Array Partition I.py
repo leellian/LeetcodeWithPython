@@ -27,4 +27,11 @@ class Solution(object):
                 sum += value
         return sum
 
-#better way: use array slice instead of loops
+#better way: use array slice instead of loops, so second commit
+class Solution(object):
+    def arrayPairSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        return sum(sorted(nums)[::2])
