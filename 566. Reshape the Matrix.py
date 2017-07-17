@@ -40,7 +40,7 @@ The height and width of the given matrix is in range [1, 100].
 The given r and c are all positive.
 """
 
-#first commit
+#first commit: notice "copy" and "deepcopy"
 class Solution(object):
     def matrixReshape(self, nums, r, c):
         """
