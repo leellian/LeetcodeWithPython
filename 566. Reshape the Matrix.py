@@ -64,3 +64,39 @@ class Solution(object):
                     result.append(tmp_list)
                     tmp_list = []
         return result
+
+#second commit: use list extend
+class Solution(object):
+    def matrixReshape(self, nums, r, c):
+        """
+        :type nums: List[List[int]]
+        :type r: int
+        :type c: int
+        :rtype: List[List[int]]
+        """
+        if r*c != len(nums)*len(nums[0]):
+            return nums
+        new_list = []
+        result = []
+        #new_list.extend(nums[i] for i in range(len(nums)))
+        for i in nums:
+            new_list.extend(i)
+        return [new_list[j*c:j*c+c] for j in range(r)]
+
+#third commit: notice M[i] = N[i/n][i%n] while n is the row of matrix N
+class Solution(object):
+    def matrixReshape(self, nums, r, c):
+        """
+        :type nums: List[List[int]]
+        :type r: int
+        :type c: int
+        :rtype: List[List[int]]
+        """
+        if r*c != len(nums)*len(nums[0]):
+            return nums
+        r_len = len(nums)
+        c_len = len(nums[0])
+        result = [[0 for i in range(c)] for j in range(r)]   #define first
+        for i in range(r*c):
+            result[i/c][i%c] = nums[i/c_len][i%c_len]
+        return result
