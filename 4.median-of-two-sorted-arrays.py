@@ -44,4 +44,29 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: float
         """
+        l1 = len(nums1)
+        l2 = len(nums2)
+        tmp_list = []
+        while(l1 > 0 and l2 > 0):
+            if nums1[l1-1] > nums2[l2-1]:
+                tmp_list.append(nums1[l1-1])
+                l1 -= 1
+            else:
+                tmp_list.append(nums2[l2-1])
+                l2 -= 1
+        if l1 > 0:
+            for i in range(l1, 0, -1):
+                tmp_list.append(nums1[i-1])
+        if l2 > 0:
+            for i in range(l2, 0, -1):
+                tmp_list.append(nums2[i-1])
+        l3 = len(tmp_list)
+        if l3%2==0:
+            return float(tmp_list[l3/2]+tmp_list[l3/2-1])/2
+        else:
+            s = (l3-1) / 2
+            return tmp_list[s]
+        # result = (tmp_list[l3/2]+tmp_list[l3/2-1])/2 if l3%2==0 else tmp_list[(l3-1)/2)]
+
+
         
