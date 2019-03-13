@@ -38,5 +38,34 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        
+        N = len(nums)
+        l,r = 0,N-1
+        l_pos,r_pos = -1,-1
+        while l<=r:
+            mid = (l+r)//2
+            if nums[mid]==target:
+                l_pos = r_pos = mid
+                mv_l = mv_r = mid
+                #print 'midddddd',mid,l,r
+                while 0<=l<=mv_l:
+                    #print 'mv_llllll',mv_l
+                    if nums[mv_l]==target:
+                        l_pos = mv_l
+                        mv_l -= 1
+                    else:
+                        break
+                while mv_r<=r<=N-1:
+                    #print 'mv_rrrrrr',mv_r
+                    if nums[mv_r]==target:
+                        r_pos = mv_r
+                        mv_r += 1
+                    else:
+                        break
+                return [l_pos,r_pos]
+            elif nums[mid]<target<=nums[r]:
+                l = mid+1
+            else:
+                r = mid-1
+        return [l_pos,r_pos]
+
 
