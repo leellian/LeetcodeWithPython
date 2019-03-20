@@ -50,26 +50,44 @@
 # 
 #
 class Solution(object):
-    def combinationSum(self, candidates, target):
-        """
-        :type candidates: List[int]
-        :type target: int
-        :rtype: List[List[int]]
-        """
-        result = []
-        self.backtracking(target,candidates,result,0,[])
-        return result
+    # def combinationSum(self, candidates, target):
+    #     """
+    #     :type candidates: List[int]
+    #     :type target: int
+    #     :rtype: List[List[int]]
+    #     """
+    #     result = []
+    #     self.backtracking(target,candidates,result,0,[])
+    #     return result
 
-    def backtracking(self,target,candidates,result,index,temp):
-            if target==0:
-                result.append(temp+[])
-                #print "3:",temp,target,result
-                return
-            for i in range(index,len(candidates)):
-                if target>=candidates[i]:
-                    temp.append(candidates[i])
-                    #print "1:",temp,i,target,result
-                    self.backtracking(target-candidates[i],candidates,result,i,temp)
-                    temp.pop()
-                    #print "2:",temp,i,target,result
+    # def backtracking(self,target,candidates,result,index,temp):
+    #         if target==0:
+    #             result.append(temp+[])
+    #             #print "3:",temp,target,result
+    #             return
+    #         for i in range(index,len(candidates)):
+    #             if target>=candidates[i]:
+    #                 temp.append(candidates[i])
+    #                 #print "1:",temp,i,target,result
+    #                 self.backtracking(target-candidates[i],candidates,result,i,temp)
+    #                 temp.pop()
+    #                 #print "2:",temp,i,target,result
+
+    def combinationSum(self, candidates, target):
+        res = []
+        candidates.sort()
+        self.dfs(candidates, target, 0, [], res)
+        return res
+    
+    def dfs(self, nums, target, index, path, res):
+        if target < 0:
+            return  # backtracking
+        if target == 0:
+            res.append(path)
+            print "2:",index,target,res,path
+            return 
+        for i in xrange(index, len(nums)):
+            print "1:",i,target,res,path
+            self.dfs(nums, target-nums[i], i, path+[nums[i]], res)
+            print "2:",i,target,res,path
 
