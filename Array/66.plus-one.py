@@ -42,5 +42,15 @@ class Solution(object):
         :type digits: List[int]
         :rtype: List[int]
         """
-        
+        if not digits:
+            return []
+        N = len(digits)
+        for i in range(N):
+            if (digits[N-i-1]+1)%10==0:
+                digits[N-i-1] = 0
+            else:
+                digits[N-i-1] += 1
+                return digits
+        if digits[0]==0:
+            return [1]+digits
 
