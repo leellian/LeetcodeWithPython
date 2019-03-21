@@ -56,6 +56,7 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
+        candidates.sort()
         result = []
         self.backtracking(target,candidates,result,0,[])
         return result
@@ -66,11 +67,15 @@ class Solution(object):
                 #print "3:",temp,target,result
                 return
             for i in range(index,len(candidates)):
+                if i>index and candidates[i]==candidates[i-1]:
+                    #print "4:",temp,i,target,result
+                    continue
                 if target>=candidates[i]:
                     temp.append(candidates[i])
                     #print "1:",temp,i,target,result
                     self.backtracking(target-candidates[i],candidates,result,i+1,temp)
                     temp.pop()
                     #print "2:",temp,i,target,result
-        
+    
+    #2. Dynamic programming TODO
 
