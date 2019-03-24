@@ -43,5 +43,14 @@ class Solution(object):
         :type n: int
         :rtype: None Do not return anything, modify nums1 in-place instead.
         """
-        
+        if not nums1 or not nums2:
+            return
+        bit = 0
+        while bit<m:
+            if nums1[bit]>nums2[0]:
+                nums1[bit],nums2[0] = nums2[0],nums1[bit]
+                nums2.sort()
+            bit+=1
+        for i in range(n):
+            nums1[m+i] = nums2[i]
 
