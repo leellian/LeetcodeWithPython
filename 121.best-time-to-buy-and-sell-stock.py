@@ -45,5 +45,28 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
+        #1. brute force:time limit exceeded
+        # if not prices or len(prices)==1:
+        #     return 0
+        # N = len(prices)
+        # for i in range(N-1,-1,-1):
+        #     temp = 0
+        #     for j in range(i-1,-1,-1):
+        #         if prices[j]>=prices[i]:
+        #             continue
+        #         else:
+        #             temp = max(temp,prices[i]-prices[j])
+        #     prices[i] = temp
+        # return max(prices[1::])
         
+        #2. O(n)
+        N = len(prices)
+        if N<2:
+            return 0
+        min_val = prices[0]
+        max_val = 0
+        for i in range(N):
+            min_val = min(min_val,prices[i])
+            max_val = max(max_val,prices[i]-min_val)
+        return max_val
 
